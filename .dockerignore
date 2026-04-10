@@ -1,0 +1,9 @@
+**/bin
+**/obj
+**/.vs
+**/.git
+frontend/node_modules
+frontend/.next
+api
+.dotnet
+.tools

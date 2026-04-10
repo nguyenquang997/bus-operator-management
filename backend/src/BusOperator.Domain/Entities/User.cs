@@ -1,0 +1,20 @@
+using BusOperator.Domain.Common;
+
+namespace BusOperator.Domain.Entities;
+
+public class User : AuditableEntity
+{
+    public int Id { get; set; }
+    public int BranchId { get; set; }
+    public string Username { get; set; } = string.Empty;
+    public string PasswordHash { get; set; } = string.Empty;
+    public string FullName { get; set; } = string.Empty;
+    public string? Email { get; set; }
+    public string? PhoneNumber { get; set; }
+    public bool IsActive { get; set; } = true;
+    public DateTime? LastLoginAt { get; set; }
+
+    public Branch Branch { get; set; } = null!;
+    public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
+    public ICollection<TripStatusHistory> TripStatusChanges { get; set; } = new List<TripStatusHistory>();
+}

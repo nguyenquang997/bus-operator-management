@@ -1,0 +1,48 @@
+version: "3.9"
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: busoperator-sql
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "YourStrong!Passw0rd"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/src/BusOperator.Api/Dockerfile
+    container_name: busoperator-backend
+    depends_on:
+      - sqlserver
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: "Server=sqlserver;Database=BusOperatorDb;User Id=sa;Password=YourStrong!Passw0rd;Encrypt=False;TrustServerCertificate=True;"
+      Jwt__Key: "CHANGE_ME_TO_A_LONG_RANDOM_SECRET"
+      Jwt__Issuer: "BusOperator"
+      Jwt__Audience: "BusOperator"
+      Seed__Admin__Username: "admin"
+      Seed__Admin__Password: "admin123"
+      Seed__Admin__FullName: "System Admin"
+      Cors__AllowedOrigins__0: "http://localhost:3000"
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: busoperator-frontend
+    depends_on:
+      - backend
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: "http://localhost:5000"
+    ports:
+      - "3000:3000"
+
+volumes:
+  sqlserver-data:
