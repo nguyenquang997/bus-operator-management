@@ -24,6 +24,7 @@ export default function TripReportPage() {
                 <th className="px-3 py-2">Tuyen</th>
                 <th className="px-3 py-2">Xe</th>
                 <th className="px-3 py-2">Tai xe</th>
+                <th className="px-3 py-2">Phu xe</th>
                 <th className="px-3 py-2">Ngay chay</th>
                 <th className="px-3 py-2">Trang thai</th>
                 <th className="px-3 py-2">Doanh thu</th>
@@ -38,6 +39,7 @@ export default function TripReportPage() {
                   <td className="px-3 py-2">{row.routeName}</td>
                   <td className="px-3 py-2">{row.vehiclePlateNumber}</td>
                   <td className="px-3 py-2">{row.driverName}</td>
+                  <td className="px-3 py-2">{row.assistantName || "-"}</td>
                   <td className="px-3 py-2">{formatDateTime(row.departureDate)}</td>
                   <td className="px-3 py-2">{row.status}</td>
                   <td className="px-3 py-2">{formatCurrency(row.totalRevenue)}</td>

@@ -18,6 +18,7 @@ public class ReportService(AppDbContext dbContext) : IReportService
                 RouteName = x.Route.Name,
                 VehiclePlateNumber = x.Vehicle.PlateNumber,
                 DriverName = x.Driver.FullName,
+                AssistantName = x.Assistant != null ? x.Assistant.FullName : null,
                 DepartureDate = x.DepartureDate,
                 Status = x.Status,
                 TotalRevenue = x.TripRevenue != null ? x.TripRevenue.TotalAmount : 0,

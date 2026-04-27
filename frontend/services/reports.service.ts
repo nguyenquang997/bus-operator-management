@@ -7,6 +7,7 @@ interface ReportApi {
   RouteName: string;
   VehiclePlateNumber: string;
   DriverName: string;
+  AssistantName?: string;
   DepartureDate: string;
   Status: string;
   TotalRevenue: number;
@@ -23,6 +24,7 @@ export const reportsService = {
       routeName: row.RouteName,
       vehiclePlateNumber: row.VehiclePlateNumber,
       driverName: row.DriverName,
+      assistantName: row.AssistantName,
       departureDate: row.DepartureDate,
       status: row.Status,
       totalRevenue: Number(row.TotalRevenue),

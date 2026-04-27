@@ -7,6 +7,7 @@ public class TripReportResponse
     public string RouteName { get; set; } = string.Empty;
     public string VehiclePlateNumber { get; set; } = string.Empty;
     public string DriverName { get; set; } = string.Empty;
+    public string? AssistantName { get; set; }
     public DateOnly DepartureDate { get; set; }
     public string Status { get; set; } = string.Empty;
     public decimal TotalRevenue { get; set; }

@@ -3,6 +3,7 @@ export const DEFAULT_BRANCH_ID = 1;
 export const VEHICLE_STATUSES = ["ACTIVE", "MAINTENANCE", "INACTIVE"] as const;
 export const EMPLOYEE_TYPES = ["DRIVER", "ASSISTANT", "OPERATOR", "ACCOUNTANT"] as const;
 export const TRIP_STATUSES = ["DRAFT", "SCHEDULED", "IN_PROGRESS", "COMPLETED", "CANCELLED"] as const;
+export const APP_ROLES = ["ADMIN", "OPERATOR", "ACCOUNTANT", "STAFF"] as const;
 
 export const REVENUE_TYPE_OPTIONS = [
   { id: 1, label: "Passenger Ticket" },

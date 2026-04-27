@@ -34,6 +34,7 @@ public static class DependencyInjection
         services.AddScoped<ITripExpenseService, TripExpenseService>();
         services.AddScoped<IDashboardService, DashboardService>();
         services.AddScoped<IReportService, ReportService>();
+        services.AddScoped<IUserService, UserService>();
 
         services.AddScoped<DatabaseSeeder>();
 
