@@ -17,10 +17,10 @@ export default function EditVehiclePage({ params }: { params: { id: string } }) 
   const onSubmit = async (payload: VehiclePayload) => {
     try {
       await mutation.mutateAsync(payload);
-      showSuccess("Da cap nhat xe");
+      showSuccess("Cap nhat xe thanh cong");
       router.push("/vehicles");
     } catch (error) {
-      showError(error instanceof Error ? error.message : "Cap nhat that bai");
+      showError(error instanceof Error ? error.message : "Loi API");
     }
   };
 

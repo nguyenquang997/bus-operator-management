@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "@/app/globals.css";
+import "sonner/dist/styles.css";
 import { AppProviders } from "@/providers/app-providers";
+import { SonnerToaster } from "@/components/ui/sonner-toaster";
 
 export const metadata: Metadata = {
   title: "Bus Operator Admin",
@@ -12,6 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="vi">
       <body>
         <AppProviders>{children}</AppProviders>
+        <SonnerToaster />
       </body>
     </html>
   );

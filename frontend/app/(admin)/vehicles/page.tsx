@@ -19,9 +19,9 @@ export default function VehiclesPage() {
     if (!confirm("Ban chac chan muon xoa xe nay?")) return;
     try {
       await deleteMutation.mutateAsync(String(id));
-      showSuccess("Da xoa xe");
+      showSuccess("Xoa xe thanh cong");
     } catch (error) {
-      showError(error instanceof Error ? error.message : "Xoa that bai");
+      showError(error instanceof Error ? error.message : "Loi API");
     }
   };
 

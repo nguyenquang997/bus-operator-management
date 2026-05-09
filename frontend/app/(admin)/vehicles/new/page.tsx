@@ -15,10 +15,10 @@ export default function NewVehiclePage() {
   const onSubmit = async (payload: VehiclePayload) => {
     try {
       await mutation.mutateAsync(payload);
-      showSuccess("Da tao xe");
+      showSuccess("Tao xe thanh cong");
       router.push("/vehicles");
     } catch (error) {
-      showError(error instanceof Error ? error.message : "Tao xe that bai");
+      showError(error instanceof Error ? error.message : "Loi API");
     }
   };
 

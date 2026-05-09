@@ -6,6 +6,7 @@ import { FormField } from "@/components/ui/form-field";
 import { Input } from "@/components/ui/input";
 import { NumberInput } from "@/components/ui/number-input";
 import { Select } from "@/components/ui/select";
+import { useToast } from "@/context/toast-context";
 import { DEFAULT_BRANCH_ID, VEHICLE_STATUSES } from "@/lib/domain-options";
 import type { VehiclePayload } from "@/types/vehicle";
 
@@ -23,10 +24,11 @@ const defaultValues: VehiclePayload = {
 };
 
 export function VehicleForm({ initialValues, onSubmit, submitLabel }: { initialValues?: VehiclePayload; onSubmit: (payload: VehiclePayload) => Promise<void>; submitLabel: string; }) {
+  const { showWarning } = useToast();
   const { register, control, handleSubmit, formState: { errors, isSubmitting } } = useForm<VehiclePayload>({ defaultValues: initialValues || defaultValues });
 
   return (
-    <form className="grid gap-4 rounded-md border border-slate-200 bg-white p-4 md:grid-cols-2" onSubmit={handleSubmit(onSubmit)}>
+    <form className="grid gap-4 rounded-md border border-slate-200 bg-white p-4 md:grid-cols-2" onSubmit={handleSubmit(onSubmit, () => showWarning("Vui long kiem tra cac truong bat buoc"))}>
       <FormField label="Ma chi nhanh" error={errors.branchId?.message}>
         <Controller
           control={control}
